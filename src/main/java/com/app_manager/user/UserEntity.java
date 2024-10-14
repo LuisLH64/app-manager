@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -14,7 +16,17 @@ import lombok.Setter;
 @Entity
 @Table(name = "users")
 public class UserEntity {
-    
+
+    public UserEntity() {}
+
+    public UserEntity(String name, String username, String email, String password, String role) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,4 +46,5 @@ public class UserEntity {
 
     @Column(name = "role")
     private String role;
+
 }
