@@ -12,11 +12,14 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app_manager.shared.BaseController;
+import com.app_manager.util.CustomResponse;
 import com.app_manager.util.ResponseModel;
 import com.app_manager.util.Url;
 
@@ -129,6 +132,19 @@ public class UserController extends BaseController {
             return ResponseEntity.ofNullable(e);
         }
     }
+
+    @PostMapping(Url.INSERT)
+    public ResponseEntity<?> insert(@RequestBody UserDTO userDTO) {
+        try {
+            userService.insert(userDTO.toUserEntity());
+            return ResponseEntity.status(201).body(new CustomResponse(1));
+        } 
+        catch (Exception e) {
+            logger.error("Error during insert", e);
+            return ResponseEntity.ofNullable(e);
+        }
+    }
+    
     
     
 }
