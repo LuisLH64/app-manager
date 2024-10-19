@@ -14,14 +14,8 @@ public class AppManagerApplication {
 	private static final Logger logger = LoggerFactory.getLogger(AppManagerApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppManagerApplication.class, args);
-
-		// ConfigurableApplicationContext applicationContext = SpringApplication
-		// 		.run(AppManagerApplication.class, args);
-		// logger.info("Application is running...");
 		
-		// applicationContext.addApplicationListener(
-		// 		(ev) -> logger.info("ApplicationEvent->" + ev.toString()));
+		SpringApplication.run(AppManagerApplication.class, args);
 	}
 
 }
