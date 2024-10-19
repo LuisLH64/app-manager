@@ -16,7 +16,7 @@ public class UserDetailsValidate implements UserDetailsService {
     private final UserService userService;
 
     public UserDetailsValidate(UserService userService) {
-        this.userService= userService;
+        this.userService = userService;
     }
 
     @Override
