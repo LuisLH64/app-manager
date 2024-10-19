@@ -14,6 +14,14 @@ public class CustomResponse {
     public CustomResponse() {
 		this(0, "", Collections.emptyMap());
 	}
+
+	public CustomResponse(String message) {
+		this(0, message, Collections.emptyMap());
+	}
+
+	public CustomResponse(String message, Object content) {
+		this(0, message, content, Collections.emptyMap());
+	}
 	
 	public CustomResponse(int linesChanged) {
 		this(linesChanged, "", Collections.emptyMap());
@@ -26,6 +34,13 @@ public class CustomResponse {
 	public CustomResponse(int linesChanged, String message, Map<String, Object> metadata) {
 		this.linesChanged = linesChanged;
 		this.message = message;
+		this.metadata = metadata;
+	}
+
+	public CustomResponse(int linesChanged, String message, Object content, Map<String, Object> metadata) {
+		this.linesChanged = linesChanged;
+		this.message = message;
+		this.content = content;
 		this.metadata = metadata;
 	}
     
