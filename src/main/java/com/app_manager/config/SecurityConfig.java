@@ -21,8 +21,8 @@ import com.app_manager.security.JwtFilter;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private JwtFilter jwtFilter;
-    private UserDetailsService userDetailsService;
+    private final JwtFilter jwtFilter;
+    private final UserDetailsService userDetailsService;
 
     protected SecurityConfig(JwtFilter jwtFilter,
                              UserDetailsService userDetailsService)
@@ -36,6 +36,10 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf
                 .disable());
+
+        http.sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        );
         
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll()
