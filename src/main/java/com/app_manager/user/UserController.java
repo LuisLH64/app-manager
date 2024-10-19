@@ -75,17 +75,10 @@ public class UserController extends BaseController {
 
     @GetMapping(Url.FIND_BY_ID)
     public ResponseEntity<?> findById(@PathVariable Long id) {
-        
-        try {
-            UserEntity user = userService.findById(id);
-            RepresentationModel<?> representationModel = responseModel().of(user);
+        UserEntity user = userService.findById(id);
+        RepresentationModel<?> representationModel = responseModel().of(user);
 
-            return ResponseEntity.ok(representationModel); 
-        } 
-        catch (Exception e) {
-            logger.error(e.toString());
-            return ResponseEntity.ofNullable(e);
-        }
+        return ResponseEntity.ok(representationModel); 
     }
 
     @GetMapping(Url.FIND_BY_NAME)
@@ -105,32 +98,18 @@ public class UserController extends BaseController {
 
     @GetMapping(Url.FIND_BY_EMAIL)
     public ResponseEntity<?> findByEmail(@RequestParam String email) {
-        
-        try {
-            UserEntity user = userService.findByEmail(email);
-            RepresentationModel<?> representationModel = responseModel().of(user);
+        UserEntity user = userService.findByEmail(email);
+        RepresentationModel<?> representationModel = responseModel().of(user);
 
-            return ResponseEntity.ok(representationModel); 
-        } 
-        catch (Exception e) {
-            logger.error(e.toString());
-            return ResponseEntity.ofNullable(e);
-        }
+        return ResponseEntity.ok(representationModel); 
     }
 
     @GetMapping(Url.FIND_BY_USERNAME)
     public ResponseEntity<?> findByUsername(@RequestParam String username) {
+        UserEntity user = userService.findByUsername(username);
+        RepresentationModel<?> representationModel = responseModel().of(user);
         
-        try {
-            UserEntity user = userService.findByUsername(username);
-            RepresentationModel<?> representationModel = responseModel().of(user);
-            
-            return ResponseEntity.ok(representationModel); 
-        } 
-        catch (Exception e) {
-            logger.error(e.toString());
-            return ResponseEntity.ofNullable(e);
-        }
+        return ResponseEntity.ok(representationModel); 
     }
 
     @PostMapping(Url.INSERT)
