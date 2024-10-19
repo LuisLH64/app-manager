@@ -21,7 +21,7 @@ public class UserService {
 
     public UserEntity findById(Long id) {
 
-        return userRepository.findById(id).get();
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException());
     }
 
     public List<UserEntity> findByName(String name) {
@@ -31,12 +31,12 @@ public class UserService {
 
     public UserEntity findByUsername(String username) {
 
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException());
     }
 
     public UserEntity findByEmail(String email) {
 
-        return userRepository.findByUsername(email);
+        return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException());
     }
 
     public void insert(UserEntity userEntity) {
