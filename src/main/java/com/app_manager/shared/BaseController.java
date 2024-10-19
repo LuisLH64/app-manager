@@ -6,7 +6,7 @@ import org.springframework.hateoas.Link;
 
 import com.app_manager.util.ResponseModel;
 
-public class BaseController {
+public abstract class BaseController {
 
     private ResponseModel responseModel;
     
